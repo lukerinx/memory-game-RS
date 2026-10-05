@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,154 +7,115 @@
 }
 
 body {
-  background: url(imgs/retro-BG.jpg);
+  background: url(imgs/retro-BG.jpg) center/cover fixed, #020502;
   color: #00ff00; 
-  font-family: 'Share Tech Mono', monospace; /* Наш подключенный шрифт */
+  font-family: 'Share Tech Mono', monospace; 
   padding: 20px;
-  
+  min-height: 100vh;
 }
 
-
-
-/* 3. Стилизация хедера */
+/* ==========================================
+   ХЕДЕР И НАВИГАЦИЯ
+========================================== */
 header {
   display: flex;
-  justify-content: space-between; /* Логотип слева, ссылки справа */
-  align-items: center; /* Выравнивание по вертикали по центру */
+  justify-content: space-between; 
+  align-items: center; 
   padding: 15px 30px;
-  border: 1px solid #00ff00; /* Тонкая рамка как в терминале */
+  border: 1px solid #00ff00; 
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
- 
+  background-color: rgba(0, 10, 0, 0.7);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+  margin-bottom: 40px;
 }
 
-/* Заглушка для картинки, чтобы было видно, где она находится */
 header img {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border: 1px dashed #00ff00; 
   border-radius: 5px;
-  margin-left: 141px;
+  object-fit: cover;
 }
 
-.nickname {
-  cursor: pointer;
-  transition: all 0.3s ease;
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.nickname:hover{
-  margin: 40px;
-    border: 2px solid #00ff00; /* Появляется рамка */
-  border-radius: 2px;
-  background-color: rgba(0, 255, 0, 0.1); /* Легкая зеленая заливка */
-  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4), inset 0 0 8px rgba(0, 255, 0, 0.2); /* Неоновое свечение снаружи и внутри */
-  text-shadow: 0 0 5px #00ff00; /* Свечение самого текста */
+.stats-container h3, .nickname {
+  text-shadow: 0 0 5px #00ff00;
+  font-size: 1.2rem;
+}
+
+.timer {
+  font-size: 60px;
+  text-shadow: 0 0 15px #00ff00;
+  letter-spacing: 2px;
 }
 
 nav a {
   color: #00ff00;
-  text-decoration: none; /* Убираем стандартное нижнее подчеркивание */
-  font-size: 1.3rem;
-  padding: 8px 15px;
+  text-decoration: none; 
+  font-size: 1.2rem;
+  padding: 10px 15px;
   margin-left: 10px;
-  border: 1px solid transparent; /* Невидимая рамка, чтобы кнопки не дергались при ховере */
-  transition: all 0.3s ease; /* Плавная анимация при наведении */
+  border: 1px solid transparent; 
+  border-radius: 4px;
+  transition: all 0.3s ease; 
+  cursor: pointer;
 }
 
 nav a:hover {
-  border: 1px solid #00ff00; /* Появляется рамка */
-  border-radius: 4px;
-  background-color: rgba(0, 255, 0, 0.1); /* Легкая зеленая заливка */
-  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4), inset 0 0 8px rgba(0, 255, 0, 0.2); /* Неоновое свечение снаружи и внутри */
-  text-shadow: 0 0 5px #00ff00; /* Свечение самого текста */
+  border: 1px solid #00ff00; 
+  background-color: rgba(0, 255, 0, 0.1); 
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4), inset 0 0 10px rgba(0, 255, 0, 0.2); 
+  text-shadow: 0 0 5px #00ff00; 
 }
 
-.timer {
-    font-size: 70px;
-}
-
-/* 1. Контейнер игрового поля (Сетка 4х4) */
-
+/* ==========================================
+   ИГРОВОЕ ПОЛЕ И КАРТОЧКИ
+========================================== */
 .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    max-width: 600px;
-    margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  perspective: 1000px;
 }
 
 .cards img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border: 1px solid #00ff00 ;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  background-color: #050a05;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .cards img:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); /* Неоновое свечение */
-  transform: scale(1.05); /* Карточка чуть-чуть увеличивается */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); 
+  transform: scale(1.03); 
 }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 10, 0, 0.85);
-    display: none; /* ФЛЕКС */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+/* Анимация поворота ребром */
+.cards img.flip-animation {
+  transform: rotateY(90deg);
 }
 
-.modal-content {
-  
-  background-color:#050a05;
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
-  padding: 40px;
- 
-  border-radius: 8px;
-  text-align: center;
-  width: 400px;
-  height: 350px;
-  max-width: 90%;
-
-  
+/* Визуал для уже угаданных пар */
+.cards img.matched {
+  opacity: 0.6;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+  pointer-events: none; /* Запрещает наведение и клики */
 }
 
-.modal-title {
-  font-size: 1.8rem;
-  margin-bottom:45px;
-  text-shadow: 0 0 10px #00ff00;
-}
-
-.modal-text {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.modal-btn {
-  background: transparent;
-  color: #00ff00;
-  font-family: inherit;
-  font-size: 1rem;
-  border: 1px solid #00ff00;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.modal-btn:hover {
-  background-color: rgba(0, 255, 0, 0.1);
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
-  transform: scale(1.05);
-}
+/* ==========================================
+   МОДАЛЬНЫЕ ОКНА
+========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -161,64 +123,96 @@ nav a:hover {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 10, 0, 0.85);
-  display: none; 
+  display: flex; /* Именно flex позволяет окну центрироваться */
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* 2. Само окно */
 .modal-content {
   background-color: #050a05;
   border: 1px solid #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
-  padding: 30px;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4), inset 0 0 15px rgba(0, 255, 0, 0.2);
+  padding: 40px;
   border-radius: 8px;
   text-align: center;
-  width: 450px;
+  width: 500px;
   max-width: 90%;
 }
 
 .modal-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #00ff00;
+  text-shadow: 0 0 15px #00ff00;
 }
 
-/* 3. Шапка таблицы (сетка 3 колонки) */
+.modal-text {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.modal-btn {
+  background: transparent;
+  color: #00ff00;
+  font-family: inherit;
+  font-size: 1.1rem;
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  padding: 10px 25px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   ТАБЛИЦА ЛИДЕРОВ
+========================================== */
 .leaderboard-header {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #00ff00;
-  font-size: 1rem;
+  gap: 15px;
+  padding: 10px 15px;
+  border-bottom: 2px solid #00ff00;
+  font-size: 1.2rem;
   font-weight: bold;
-}
-
-.leaderboard-header span:nth-child(2),
-.leaderboard-header span:nth-child(3) {
   text-align: center;
+  margin-bottom: 10px;
 }
 
-/* 4. Контейнер со скроллом */
+.leaderboard-header span:first-child {
+  text-align: left;
+}
+
 .leaderboard-list {
-  max-height: 160px; /* Высота до появления прокрутки */
+  max-height: 220px; 
   overflow-y: auto;
-  margin-bottom: 25px;
-  border: 1px solid rgba(0, 255, 0, 0.3);
-  border-top: none;
-  padding: 5px 10px;
+  margin-bottom: 30px;
+  padding-right: 10px;
 }
 
-/* 5. Сами строки игроков */
 .leaderboard-item {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+  gap: 15px;
+  padding: 12px 15px;
+  border-bottom: 1px dashed rgba(0, 255, 0, 0.3);
   font-size: 1.1rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.leaderboard-item:hover {
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.leaderboard-item span:first-child {
   text-align: left;
 }
 
@@ -226,29 +220,118 @@ nav a:hover {
   border-bottom: none;
 }
 
-.player-time,
-.player-moves {
-  text-align: center;
-}
-
-/* 6. Кастомный зеленый ползунок скролла */
+/* Кастомный неоновый ползунок скролла */
 .leaderboard-list::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
-
 .leaderboard-list::-webkit-scrollbar-track {
-  background: #020502;
+  background: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
 }
-
 .leaderboard-list::-webkit-scrollbar-thumb {
   background: #00ff00;
-  border-radius: 3px;
-  box-shadow: 0 0 5px #00ff00;
+  border-radius: 4px;
+  box-shadow: 0 0 8px #00ff00;
 }
 
-
-
-/* 7. Универсальный класс для скрытия окон в будущем (через JS) */
+/* ==========================================
+   УТИЛИТЫ
+========================================== */
 .hidden {
-  display: none !important;
+  display: none !important; /* Жестко перебивает flex и скрывает окно */
+}
+
+/* Планшеты и экраны поменьше (до 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  /* Хедер перестраивается в колонку, чтобы элементы не сжимались */
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .stats-container {
+    align-items: center;
+  }
+
+  .header-right, nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  nav a {
+    margin-left: 0;
+    padding: 8px 10px;
+    font-size: 1rem;
+  }
+
+  /* Уменьшаем таймер для планшетов */
+  .timer {
+    font-size: 45px;
+  }
+
+  /* Игровое поле становится компактнее */
+  .cards {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .cards img {
+    height: 110px; /* Уменьшаем высоту карточек */
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* Мобильные телефоны (до 480px) */
+@media (max-width: 480px) {
+  header img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timer {
+    font-size: 35px;
+  }
+
+  /* На узких экранах сетку делаем чуть плотнее */
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .cards img {
+    height: 75px; /* Чтобы карточки поместились на экране телефона без вертикального скролла */
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-text {
+    font-size: 1rem;
+  }
+
+  .modal-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin: 5px;
+  }
+
+  /* Адаптируем таблицу лидеров для мобилок */
+  .leaderboard-header, .leaderboard-item {
+    font-size: 0.9rem;
+    gap: 5px;
+    padding: 8px 5px;
+  }
 }
