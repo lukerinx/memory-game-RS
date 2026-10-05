@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+         <img src="imgs/Minimalist_logo_design_with_luke…_2K_20261004204735.jpg" alt="">
+         <h3 class="nickname">Сlick to change the nickname</h3>
+         <div class="timer">
+            <h2>10:00</h2>
+         </div>
+       <nav>
+            <a href="#">Таблица лидеров</a>
+            <a href="#">Перемешать карточки</a>
+            <a href="#">Start over</a>
+        </nav>
+        </header>
+        <div class="cards">
+            <img src="imgs/CSS_CARD.jpg" alt="">
+            <img src="imgs/CSS_CARD.jpg" alt="">
+            <img src="imgs/HTML_CARD.jpg" alt="">
+            <img src="imgs/HTML_CARD.jpg" alt="">
+            <img src="imgs/JS_CARD.jpg" alt="">
+            <img src="imgs/JS_CARD.jpg" alt="">
+            <img src="imgs/React_CARD.jpg" alt="">
+            <img src="imgs/React_CARD.jpg" alt="">
+            <img src="imgs/Node.js_CARD.jpg" alt="">
+            <img src="imgs/Node.js_CARD.jpg" alt="">
+            <img src="imgs/Neon_CARD.jpg" alt="">
+            <img src="imgs/Neon_CARD.jpg" alt="">
+            <img src="imgs/Python_CARD.jpg" alt="">
+            <img src="imgs/Python_CARD.jpg" alt="">
+            <img src="imgs/GitHub_CARD.jpg" alt="">
+            <img src="imgs/GitHub_CARD.jpg" alt="">
+        </div>
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <h2 class="modal-title">THE SYSTEM IS HACKED!</h2>
+                 <p class="modal-text">You've found all the matches! Try to set a new record!<br>SPENT MOVES: <span id="final-moves">14</span></p>
+
+                 <div class="modal-actions">
+                    <button class="modal-btn">New Game</button>
+                    <button class="modal-btn">Close</button>
+                 </div>
+            </div>
+        </div>
+        <div class="modal-overlay" id="leaderboard-modal">
+  <div class="modal-content">
+    <h2 class="modal-title">ТАБЛИЦА ЛИДЕРОВ</h2>
+    
+    <!-- Шапка колонок -->
+    <div class="leaderboard-header hidden">
+      <span>AGENT</span>
+      <span>TIME</span>
+      <span>MOVES</span>
+    </div>
+
+    <!-- Контейнер для записей -->
+    <div class="leaderboard-list" id="leaderboard-list" hidden>
+      <div class="leaderboard-item">
+        <span class="player-name">1. NEO</span>
+        <span class="player-time">00:42</span>
+        <span class="player-moves">14</span>
+      </div>
+      <div class="leaderboard-item">
+        <span class="player-name">2. TRINITY</span>
+        <span class="player-time">01:05</span>
+        <span class="player-moves">16</span>
+      </div>
+      <div class="leaderboard-item">
+        <span class="player-name">3. MORPHEUS</span>
+        <span class="player-time">01:20</span>
+        <span class="player-moves">18</span>
+      </div>
+      <div class="leaderboard-item">
+        <span class="player-name">4. CIPHER</span>
+        <span class="player-time">02:15</span>
+        <span class="player-moves">26</span>
+      </div>
+       <div class="leaderboard-item">
+        <span class="player-name">5. SMITH</span>
+        <span class="player-time">03:00</span>
+        <span class="player-moves">32</span>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="modal-btn" id="close-leaderboard-btn">CLOSE</button>
+    </div>
+  </div>
+</div>
+        
+
+    
+</body>
+</html>

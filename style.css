@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(imgs/retro-BG.jpg);
+  color: #00ff00; 
+  font-family: 'Share Tech Mono', monospace; /* Наш подключенный шрифт */
+  padding: 20px;
+  
+}
+
+
+
+/* 3. Стилизация хедера */
+header {
+  display: flex;
+  justify-content: space-between; /* Логотип слева, ссылки справа */
+  align-items: center; /* Выравнивание по вертикали по центру */
+  padding: 15px 30px;
+  border: 1px solid #00ff00; /* Тонкая рамка как в терминале */
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+ 
+}
+
+/* Заглушка для картинки, чтобы было видно, где она находится */
+header img {
+  width: 100px;
+  height: 100px;
+  border: 1px dashed #00ff00; 
+  border-radius: 5px;
+  margin-left: 141px;
+}
+
+.nickname {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nickname:hover{
+  margin: 40px;
+    border: 2px solid #00ff00; /* Появляется рамка */
+  border-radius: 2px;
+  background-color: rgba(0, 255, 0, 0.1); /* Легкая зеленая заливка */
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4), inset 0 0 8px rgba(0, 255, 0, 0.2); /* Неоновое свечение снаружи и внутри */
+  text-shadow: 0 0 5px #00ff00; /* Свечение самого текста */
+}
+
+nav a {
+  color: #00ff00;
+  text-decoration: none; /* Убираем стандартное нижнее подчеркивание */
+  font-size: 1.3rem;
+  padding: 8px 15px;
+  margin-left: 10px;
+  border: 1px solid transparent; /* Невидимая рамка, чтобы кнопки не дергались при ховере */
+  transition: all 0.3s ease; /* Плавная анимация при наведении */
+}
+
+nav a:hover {
+  border: 1px solid #00ff00; /* Появляется рамка */
+  border-radius: 4px;
+  background-color: rgba(0, 255, 0, 0.1); /* Легкая зеленая заливка */
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4), inset 0 0 8px rgba(0, 255, 0, 0.2); /* Неоновое свечение снаружи и внутри */
+  text-shadow: 0 0 5px #00ff00; /* Свечение самого текста */
+}
+
+.timer {
+    font-size: 70px;
+}
+
+/* 1. Контейнер игрового поля (Сетка 4х4) */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.cards img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border: 1px solid #00ff00 ;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cards img:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); /* Неоновое свечение */
+  transform: scale(1.05); /* Карточка чуть-чуть увеличивается */
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 10, 0, 0.85);
+    display: none; /* ФЛЕКС */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+  
+  background-color:#050a05;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
+  padding: 40px;
+ 
+  border-radius: 8px;
+  text-align: center;
+  width: 400px;
+  height: 350px;
+  max-width: 90%;
+
+  
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  margin-bottom:45px;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.modal-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.modal-btn {
+  background: transparent;
+  color: #00ff00;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #00ff00;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+  transform: scale(1.05);
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 10, 0, 0.85);
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 2. Само окно */
+.modal-content {
+  background-color: #050a05;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 450px;
+  max-width: 90%;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+/* 3. Шапка таблицы (сетка 3 колонки) */
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #00ff00;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.leaderboard-header span:nth-child(2),
+.leaderboard-header span:nth-child(3) {
+  text-align: center;
+}
+
+/* 4. Контейнер со скроллом */
+.leaderboard-list {
+  max-height: 160px; /* Высота до появления прокрутки */
+  overflow-y: auto;
+  margin-bottom: 25px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-top: none;
+  padding: 5px 10px;
+}
+
+/* 5. Сами строки игроков */
+.leaderboard-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.player-time,
+.player-moves {
+  text-align: center;
+}
+
+/* 6. Кастомный зеленый ползунок скролла */
+.leaderboard-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+  background: #020502;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+
+
+/* 7. Универсальный класс для скрытия окон в будущем (через JS) */
+.hidden {
+  display: none !important;
+}
